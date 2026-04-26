@@ -1,0 +1,13 @@
+# Power BI specific
+*.pbix
+*.pbit.user
+*.pbip
+*.pbi
+
+# Data files (Store sample data only)
+data/raw/*
+!data/raw/sample_template.csv
+
+# Temporary files
+~$*
+.DS_Store
