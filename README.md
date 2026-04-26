@@ -60,8 +60,21 @@ The tracking model operates on the following production distribution:
 ## 📁 Project Structure
 
 ```bash
-├── data/           # Raw and processed CSV/Excel files
-├── docs/           # Documentation and Dashboard screenshots
-├── notebooks/      # Python scripts for data simulation and cleaning
-├── powerbi/        # PowerBI Template (.pbit) files
-└── README.md       # Project overview and technical details
+├── .github/                # GitHub-specific configurations
+│   ├── ISSUE_TEMPLATE/     # Templates for bug reports and features
+│   └── workflows/          # GitHub Actions (CI/CD)
+├── data/
+│   ├── raw/                # Unmodified SAP exports
+│   └── processed/          # Cleaned data ready for PowerBI
+├── docs/
+│   ├── images/             # Dashboard screenshots & Architecture diagrams
+│   └── reference/          # PDF manuals or SAP field mappings
+├── powerbi/
+│   ├── dax/                # Version-controlled .dax files
+│   ├── power_query/        # .m scripts for data cleaning
+│   └── Operation_Tracking.pbit
+├── scripts/                # Python/PowerShell for data fetching/cleaning
+├── .gitignore              # Crucial: Ignore large .pbix and sensitive CSVs
+├── CONTRIBUTING.md         # Instructions for others to help
+├── LICENSE                 # Legal permissions (e.g., MIT)
+└── README.md
