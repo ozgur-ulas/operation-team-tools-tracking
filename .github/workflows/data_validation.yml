@@ -1,0 +1,24 @@
+name: Data Health Check
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Check for Data Integrity
+        run: |
+          # Simple script to ensure CSVs exist and aren't 0kb
+          if [ -s data/raw/sample_sap_export.csv ]; then
+            echo "SAP Export Data Found."
+          else
+            echo "Critical Error: SAP Export Missing or Empty!"
+            exit 1
+          fi
