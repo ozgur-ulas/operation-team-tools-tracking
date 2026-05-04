@@ -1,4 +1,4 @@
-Date	Line_ID	Brand	Target_prod	Real_prod	Operator
+Date,	Line_ID,	Brand,	Target_prod,	Real_prod,	Operator
 2023-04-01	Test Hattı 8	Ford	3334	3297	Kadir
 2023-04-01	Ana Montaj Hattı	BMW	3334	3319	Ömer
 2023-04-01	Test Hattı 6	Daimler	3334	3336	Ali
