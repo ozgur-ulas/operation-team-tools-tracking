@@ -6,8 +6,9 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -15,10 +16,10 @@ jobs:
 
       - name: Check for Data Integrity
         run: |
-          # Simple script to ensure CSVs exist and aren't 0kb
-          if [ -s data/raw/sample_sap_export.csv ]; then
-            echo "SAP Export Data Found."
+          # Dosyanın varlığını ve boş olmadığını kontrol eder
+          if [ -s "data/raw/sample_sap_export.csv" ]; then
+            echo "✅ SAP Export Data Found."
           else
-            echo "Critical Error: SAP Export Missing or Empty!"
+            echo "❌ Critical Error: SAP Export Missing or Empty!"
             exit 1
           fi
