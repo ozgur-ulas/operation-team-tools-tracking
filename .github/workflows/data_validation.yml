@@ -6,20 +6,28 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+      # Node.js 24 uyumlu güncel sürümler (v4 ve v5+)
       - name: Checkout Code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4
+      
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11' # Daha güncel bir Python sürümü
 
       - name: Check for Data Integrity
         run: |
-          # Dosyanın varlığını ve boş olmadığını kontrol eder
-          if [ -s "data/raw/sample_sap_export.csv" ]; then
-            echo "✅ SAP Export Data Found."
+          # Klasör yapısını kontrol et (Hata ayıklama için)
+          ls -R
+          
+          # Dosya yolu ve boyutu kontrolü
+          FILE_PATH="data/raw/sample_sap_export.csv"
+          
+          if [ -f "$FILE_PATH" ] && [ -s "$FILE_PATH" ]; then
+            echo "✅ SAP Export Data Found and Not Empty."
           else
-            echo "❌ Critical Error: SAP Export Missing or Empty!"
+            echo "❌ Critical Error: SAP Export Missing or Empty at $FILE_PATH!"
+            # Mevcut dizini yazdır ki nerede olduğumuzu görelim
+            pwd
             exit 1
           fi
